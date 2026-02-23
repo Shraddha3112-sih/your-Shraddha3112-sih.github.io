@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shraddha Shukla | Software Engineer</title>
+
+<style>
+/* ================= BASE ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f8f9fb;
+    color: #222;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+/* ================= HEADER ================= */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+.title {
+    font-size: 18px;
+    color: #555;
+    margin: 6px 0;
+}
+
+.contact {
+    font-size: 14px;
+    color: #666;
+}
+
+.contact a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 22px;
+    border: 1px solid #2563eb;
+    color: #2563eb;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.theme-btn {
+    margin-top: 12px;
+    padding: 8px 16px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* ================= SECTIONS ================= */
+section {
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 5px;
+}
+
+/* ================= CONTENT ================= */
+ul {
+    margin-left: 20px;
+}
+
+.two-column {
+    columns: 2;
+}
+
+.item {
+    margin-bottom: 15px;
+}
+
+.item h3 {
+    font-size: 16px;
+}
+
+/* ================= PROFILES ================= */
+.profiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.profile-card {
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+.profile-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* ================= FOOTER ================= */
+footer {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 30px;
+}
+
+/* ================= DARK MODE ================= */
+.dark {
+    background: #111827;
+    color: #e5e7eb;
+}
+
+.dark .container {
+    background: #1f2933;
+}
+
+.dark a {
+    color: #93c5fd;
+}
+
+.dark .profile-card {
+    border-color: #374151;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <h1>Shraddha Shukla</h1>
+    <p class="title">Aspiring Software Engineer</p>
+    <p class="contact">
+        Uttar Pradesh, India ·
+        <a href="mailto:shraddha2004shukla@gmail.com">shraddha2004shukla@gmail.com</a> ·
+        8175953692
+    </p>
+
+    <!-- Resume button works when resume.pdf is in same folder -->
+    <a class="btn" href="resume.pdf" download>Download Resume</a><br>
+    <button class="theme-btn" id="themeToggle">🌙 Dark Mode</button>
+</header>
+
+<section>
+    <h2>Professional Summary</h2>
+    <p>
+        Aspiring Software Engineer with hands-on knowledge of C, Python, and
+        front-end web technologies (HTML, CSS). Passionate about problem-solving
+        and building practical applications. Seeking an entry-level role to grow
+        skills and contribute to real-world projects.
+    </p>
+</section>
+
+<section>
+    <h2>Technical Skills</h2>
+    <ul class="two-column">
+        <li>C Programming</li>
+        <li>Python</li>
+        <li>HTML & CSS</li>
+        <li>Logic Building</li>
+        <li>Problem Solving</li>
+        <li>Basic Algorithms</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Projects</h2>
+
+    <div class="item">
+        <h3>Student Portfolio Website</h3>
+        <p>Designed a responsive personal portfolio using HTML and CSS.</p>
+    </div>
+
+    <div class="item">
+        <h3>Basic Calculator (Python)</h3>
+        <p>Command-line calculator with arithmetic operations and error handling.</p>
+    </div>
+
+    <div class="item">
+        <h3>Number Guessing Game (Python)</h3>
+        <p>Interactive game using loops and conditional statements.</p>
+    </div>
+</section>
+
+<section>
+    <h2>Experience</h2>
+    <p>
+        Completed two internships that enhanced analytical thinking,
+        communication skills, teamwork, and discipline.
+    </p>
+</section>
+
+<section>
+    <h2>Education</h2>
+    <p><strong>High School:</strong> 90%</p>
+    <p><strong>Intermediate:</strong> 95%</p>
+    <p>Banasthali Vidyapith, Jaipur</p>
+</section>
+
+<section>
+    <h2>Professional Profiles</h2>
+    <div class="profiles">
+        <a class="profile-card" href="https://github.com/" target="_blank">
+            <h3>🐙 GitHub</h3>
+            <p>Code repositories & projects</p>
+        </a>
+        <a class="profile-card" href="https://linkedin.com/" target="_blank">
+            <h3>💼 LinkedIn</h3>
+            <p>Professional profile</p>
+        </a>
+    </div>
+</section>
+
+<section>
+    <h2>Languages</h2>
+    <ul>
+        <li>English – Professional</li>
+        <li>Hindi – Native</li>
+    </ul>
+</section>
+
+<footer>
+    © 2026 Shraddha Shukla
+</footer>
+
+</div>
+
+<script>
+// Dark mode toggle
+document.getElementById("themeToggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    document.getElementById("themeToggle").textContent =
+        document.body.classList.contains("dark")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+});
+
+// Scroll reveal
+const sections = document.querySelectorAll("section");
+const reveal = () => {
+    sections.forEach(sec => {
+        if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+            sec.classList.add("visible");
+        }
+    });
+};
+window.addEventListener("scroll", reveal);
+reveal();
+</script>
+
+</body>
+</html>
