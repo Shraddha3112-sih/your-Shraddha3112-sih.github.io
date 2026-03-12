@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hacker News Search</title>
+    </head>
+    <body>
+        <h1> News Search</h1>
+        <input type="text" id="topic" placeholder="Enter keyword" />
+        <button onclick="fetchNews()">Search</button>
+        <div id="news"></div>
+
+        <script>
+            async function fetchNews() {
+                const topicInput = document.getElementById("topic");
+                const topic = topicInput.value.trim();
+                const newsContainer = document.getElementById("news");
+
+                if (!topic) {
+                    newsContainer.innerHTML = "Please enter a keyword.";
+                    return;
+                }
+
+                newsContainer.innerHTML = "Loading...";
+
+                const url = `https://hn.algolia.com/api/v1/search?query=${topic}`;
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+
+                    if (data.hits && data.hits.length > 0) {
+                        newsContainer.innerHTML = data.hits.map(hit => `
+                            <div>
+                                <h2>${hit.title || "No title available"}</h2>
+                                <a href="${hit.url}" target="_blank">Open Link</a>
+                            </div>
+                        `).join('');
+                    } else {
+                        newsContainer.innerHTML = "No results found.";
+                    }
+                } catch (error) {
+                    newsContainer.innerHTML = "Error fetching results.";
+                }
+            }
+        </script>
+    </body>
+</html>
