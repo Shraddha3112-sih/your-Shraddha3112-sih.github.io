@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Todo List</title>
+    
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            background-color: #eef2f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .todo-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3436;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #0984e3;
+        }
+
+        .add-btn {
+            padding: 10px 20px;
+            background-color: #0984e3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .add-btn:hover {
+            background-color: #074b83;
+        }
+
+        .todo-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: #fdfdfd;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 5px solid #0984e3;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .delete-btn {
+            background-color: #ff7675;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background-color: #d63031;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function TodoItem({ task, onDelete }) {
+            return (
+                <li className="todo-item">
+                    <span>{task}</span>
+                    <button className="delete-btn" onClick={onDelete}>Delete</button>
+                </li>
+            );
+        }
+
+        function TodoInput({ onAddTodo }) {
+            const [inputValue, setInputValue] = useState('');
+
+            const handleSubmit = (e) => {
+                e.preventDefault(); // Prevents page reload
+                if (inputValue.trim()) {
+                    onAddTodo(inputValue);
+                    setInputValue('');
+                }
+            };
+
+            return (
+                <form className="input-group" onSubmit={handleSubmit}>
+                    <input 
+                        type="text" 
+                        value={inputValue} 
+                        onChange={(e) => setInputValue(e.target.value)} 
+                        placeholder="What needs to be done?"
+                    />
+                    <button type="submit" className="add-btn">Add</button>
+                </form>
+            );
+        }
+
+        function App() {
+            const [todos, setTodos] = useState([]);
+
+            const addTodo = (text) => {
+                setTodos([...todos, text]);
+            };
+
+            const deleteTodo = (index) => {
+                const newTodos = todos.filter((_, i) => i !== index);
+                setTodos(newTodos);
+            };
+
+            return (
+                <div className="todo-container">
+                    <h1>Your Tasks!!!</h1>
+                    <TodoInput onAddTodo={addTodo} />
+                    <ul className="todo-list">
+                        {todos.map((todo, index) => (
+                            <TodoItem 
+                                key={index} 
+                                task={todo} 
+                                onDelete={() => deleteTodo(index)} 
+                            />
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        // FIXED: Using "App" (Capitalized) instead of "app"
+        root.render(<App />);
+    </script>
+</body>
+</html>
